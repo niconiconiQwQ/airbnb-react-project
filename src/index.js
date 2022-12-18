@@ -1,17 +1,20 @@
-import React from 'react';
+import React,{Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { HashRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import App from '@/App';
+// 引入初始化css
+import "normalize.css";
+import "./assets/css/index.less";
+import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+    <Suspense fallback={<h2>loading</h2>}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Suspense>
+  </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
