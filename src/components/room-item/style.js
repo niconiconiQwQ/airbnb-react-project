@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const RoomWrapper = styled.li`
-  width: 25%;
+  width: ${props => props.itemWidth};
   box-sizing: border-box;
   padding: 8px;
   .inner {
@@ -9,7 +9,7 @@ export const RoomWrapper = styled.li`
       box-sizing: border-box;
       padding: 66.66% 8px 0;
       border-radius: 6px;
-      overflow:hidden;
+      overflow: hidden;
       img {
         position: absolute;
         top: 0;
@@ -18,23 +18,38 @@ export const RoomWrapper = styled.li`
         height: 100%;
       }
     }
-    .desc{
-       margin: 10px 0 5px;
-       font-size:12px;
-       font-weight:700;
-       color: #39576a;
+    .desc {
+      margin: 10px 0 5px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #39576a;
     }
-    .name{
+    .name {
       font-size: 16px;
       font-weight: 700;
       color: #484848;
       margin-bottom: 8px;
-      :hover{
-        cursor: pointer;
-      }
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      cursor: pointer;
     }
-    .price{
-
+    .price {
+      margin: 8px 0;
+    }
+    .button {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      .count{
+        margin: 0 2px 0 4px;
+      }
+      .MuiRating-icon {
+        margin-right: -1px;
+      }
     }
   }
 `;

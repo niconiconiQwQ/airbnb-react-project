@@ -7,8 +7,8 @@ import {ThemeProvider} from 'styled-components';
 import theme from "./assets/theme"
 // 引入初始化css
 import "normalize.css";
+import "antd/dist/antd.less";
 import "./assets/css/index.less";
-import 'antd/dist/antd.less';
 import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

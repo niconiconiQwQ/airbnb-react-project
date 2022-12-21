@@ -1,43 +1,45 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { HomeWrapper } from "./style";
-import HomeBanner from "./c-cpns/home-banner"
-import Rating from "@mui/material/Rating";
-import SectionHeader from "@/components/section-header"
-import {fetchHomeDataAction} from "@/store/modules/home"
-import RoomItem from "@/components/room-item";
+import HomeBanner from "./c-cpns/home-banner";
+import { fetchHomeDataAction } from "@/store/modules/home";
+import HomeSectionV1 from "./c-cpns/homej-section-v1";
+import { isEmptyObj } from "@/utils";
+import HomeSectionV2 from "./c-cpns/home-section-v2";
 const index = memo(() => {
-  /* 从redux获取数据 */
-  const { goodPriceInfo } = useSelector((state) => ({
-    goodPriceInfo:state.home.goodPriceInfo
-  }),shallowEqual)
+  /* 从 redux 获取数据 */
+  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =
+    useSelector(
+      (state) => ({
+        goodPriceInfo: state.home.goodPriceInfo,
+        highScoreInfo: state.home.highScoreInfo,
+        discountInfo: state.home.discountInfo,
+        recommendInfo: state.home.recommendInfo,
+      }),
+      shallowEqual
+    );
   /* 派发异步事件，发送网络请求 */
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchHomeDataAction())
+    dispatch(fetchHomeDataAction());
   }, [dispatch]);
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <SectionHeader title={goodPriceInfo.title} />
-        <ul className="room-list">
-          {goodPriceInfo.list?.slice(0, 8).map((item) => {
-            return <RoomItem itemData={item} key={item.id} />;
-          })}
-        </ul>
+        {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+        {isEmptyObj(recommendInfo) && (
+          <HomeSectionV2 infoData={recommendInfo} />
+        )}
+        {isEmptyObj(goodPriceInfo) && (
+          <HomeSectionV1 infoData={goodPriceInfo} />
+        )}
+        {isEmptyObj(highScoreInfo) && (
+          <HomeSectionV1 infoData={highScoreInfo} />
+        )}
       </div>
-      {/* <>
-        <Button type="primary">Primary Button</Button>
-        <Button>Default Button</Button>
-        <Button type="dashed">Dashed Button</Button>
-        <br />
-        <Button type="text">Text Button</Button>
-        <Button type="link">Link Button</Button>
-      </> */}
-      <Rating name="read-only" value={4} readOnly />
     </HomeWrapper>
   );
-})
+});
 
-export default index
+export default index;
