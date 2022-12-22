@@ -9,7 +9,7 @@ const AppFooter = memo(() => {
           <h4 className='title'>{item.title}</h4>
           <ul className='links'>
             {item.link.map((link, index) => {
-              return <li className='item'><a href="javascript;">{ link }</a></li>
+              return <li className='item' key={index}><a href="javascript;">{ link }</a></li>
             })}
           </ul>
         </div>
