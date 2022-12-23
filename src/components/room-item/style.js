@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const RoomWrapper = styled.li`
-  width: ${props => props.itemWidth};
+  width: ${(props) => props.itemWidth};
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 8px;
@@ -17,6 +17,46 @@ export const RoomWrapper = styled.li`
         left: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
+      }
+    }
+    .swiper {
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        .controls {
+          display: flex;
+        }
+      }
+      .controls {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: none;
+        justify-content: space-between;
+        color: #fff;
+        .btn {
+          width: 83px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          background: linear-gradient(
+            to left,
+            transparent 0%,
+            rgba(0, 0, 0, 0.25) 100%
+          );
+          &.right {
+            background: linear-gradient(
+              to right,
+              transparent 0%,
+              rgba(0, 0, 0, 0.25) 100%
+            );
+          }
+        }
       }
     }
     .desc {
@@ -45,7 +85,7 @@ export const RoomWrapper = styled.li`
       align-items: center;
       font-size: 12px;
       font-weight: 600;
-      .count{
+      .count {
         margin: 0 2px 0 4px;
       }
       .MuiRating-icon {
