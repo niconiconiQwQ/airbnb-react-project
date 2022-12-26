@@ -58,6 +58,31 @@ export const RoomWrapper = styled.li`
           }
         }
       }
+      .indicator {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 30%;
+        z-index: 10;
+        .dot-item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 20%;
+          .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+            &.active {
+              height: 8px;
+              width: 8px;
+            }
+          }
+        }
+      }
     }
     .desc {
       margin: 10px 0 5px;

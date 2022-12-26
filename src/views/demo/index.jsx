@@ -13,7 +13,6 @@ const Demo = memo(() => {
       newIndex = names.length - 1;
     }
     setIndex(newIndex)
-    // console.log(newIndex,names[newIndex]);
   }
   return (
     <DemoWrapper>
