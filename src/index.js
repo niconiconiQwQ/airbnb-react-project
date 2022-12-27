@@ -13,6 +13,7 @@ import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  /* 这里 Provider 要在 Suspense外面，否则异步加载的组件的会有问题 */
   <Provider store={store}>
     <Suspense fallback={<h2>loading</h2>}>
       <HashRouter>

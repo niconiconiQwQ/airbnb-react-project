@@ -11,7 +11,9 @@ const RoomItem = memo((props) => {
   const { itemData, itemWidth = "25%",itemClick } = props;
   const [selectIndex, setSelectIndex] = useState(0);
   const sliderRef = useRef();
-  function controlHandle(isRight) {
+  // 左右轮播控制
+  function controlHandle(e, isRight) {
+    e.stopPropagation();
     let newIndex = selectIndex;
     if (isRight) {
       sliderRef.current.next();
@@ -23,8 +25,8 @@ const RoomItem = memo((props) => {
     if (newIndex < 0) newIndex = itemData.picture_urls.length - 1;
     if (newIndex > itemData.picture_urls.length - 1) newIndex = 0;
     setSelectIndex(newIndex);
-    console.log(selectIndex);
   }
+  // 跳转逻辑
   function roomClickHandle() {
     // 如果外界有传入 itemClick， 则会跳转
     if (itemClick) {
@@ -40,10 +42,10 @@ const RoomItem = memo((props) => {
   const swiper = (
     <div className="swiper">
       <div className="controls">
-        <div className="btn left" onClick={(e) => controlHandle(false)}>
+        <div className="btn left" onClick={(e) => controlHandle(e,false)}>
           <IconLeftArrow width={25} height={25}></IconLeftArrow>
         </div>
-        <div className="btn right" onClick={(e) => controlHandle(true)}>
+        <div className="btn right" onClick={(e) => controlHandle(e,true)}>
           <IconRightArrow width={25} height={25}></IconRightArrow>
         </div>
       </div>
@@ -74,7 +76,7 @@ const RoomItem = memo((props) => {
     </div>
   );
   return (
-    <RoomWrapper itemWidth={itemWidth} onClick={ roomClickHandle }>
+    <RoomWrapper itemWidth={itemWidth} onClick={roomClickHandle}>
       <div className="inner">
         {/* 如果有 picture_urls 就 展示轮播图 ，否则显示单个封面的*/}
         {itemData.picture_urls ? swiper : cover}

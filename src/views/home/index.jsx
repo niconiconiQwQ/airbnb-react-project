@@ -2,12 +2,14 @@ import React, { memo, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { HomeWrapper } from "./style";
 import HomeBanner from "./c-cpns/home-banner";
+import AppHeader from "@/components/app-header";
 import { fetchHomeDataAction } from "@/store/modules/home";
 import { isEmptyObj } from "@/utils";
 import HomeSectionV1 from "./c-cpns/homej-section-v1";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
 import HomeLongfor from "./c-cpns/home-longfor";
+import { changeHeaderConfigAction } from "@/store/modules/main";
 const index = memo(() => {
   /* 从 redux 获取数据 */
   const {
@@ -32,9 +34,11 @@ const index = memo(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchHomeDataAction());
+    dispatch(changeHeaderConfigAction({isFixed:true}))
   }, [dispatch]);
   return (
     <HomeWrapper>
+      <AppHeader/>
       <HomeBanner />
       <div className="content">
         {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}

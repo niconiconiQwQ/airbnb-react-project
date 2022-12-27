@@ -3,7 +3,6 @@ import React, { memo, useEffect, useRef } from "react";
 import { IndicatorWrapper } from "./style";
 const Indicator = memo((props) => {
   const { selectIndex = 0 } = props;
-  console.log(selectIndex);
   const contentRef = useRef();
   useEffect(() => {
     const selectItemEl = contentRef.current.children[selectIndex];
