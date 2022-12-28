@@ -1,11 +1,12 @@
 import classNames from 'classnames'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { shallowEqual, useSelector } from 'react-redux'
 import Center from './c-cpns/header-center'
 import Left from './c-cpns/header-left'
 import Right from './c-cpns/header-right'
-import { HeaderWrapper } from './style'
+import { HeaderWrapper, SearchAreaWrapper } from './style'
 const index = memo(() => {
+  const [isSearch, setIsSearch] = useState(false)
   const { headerConfig } = useSelector((state) => {
     return {
       headerConfig:state.main.headerConfig
@@ -15,14 +16,15 @@ const index = memo(() => {
   return (
     <HeaderWrapper className={classNames({ fixed: isFixed })}>
       <div className="content">
-        <div className='top'>
+        <div className="top">
           <Left />
-          <Center />
-          <Right/>
+          <Center isSearch={isSearch} searchBarClick={ e=> setIsSearch(true)} />
+          <Right />
         </div>
-        <div className='search-area'></div>
+        <SearchAreaWrapper isSearch={ isSearch } />
       </div>
-      <div className='cover'></div>
+      {/* 遮罩层 */}
+      {isSearch && <div className="cover" onClick={e=> setIsSearch(false)}></div>}
     </HeaderWrapper>
   );
 })
