@@ -8,7 +8,7 @@ const SearchTabs = memo((props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   function itemClickHandle(index) {
     setCurrentIndex(index);
-    if (tabClick) tabClick();
+    if (tabClick) tabClick(index);
   }
   return (
     <TabsWrapper>

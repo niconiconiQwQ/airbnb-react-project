@@ -9,6 +9,8 @@ export const RightWrapper = styled.div`
   font-weight: 600;
   .btns {
     display: flex;
+    color: ${(props) =>
+      props.theme.isAlpha ? "#fff" : props.theme.textColor.primaryColor};
     .btn {
       height: 18px;
       line-height: 18px;
@@ -17,7 +19,8 @@ export const RightWrapper = styled.div`
       cursor: pointer;
       border-radius: 22px;
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${(props) =>
+          props.theme.isAlpha ? "rgba(255,255,255,.2)" : "#f5f5f5"};
       }
     }
   }
@@ -36,27 +39,28 @@ export const RightWrapper = styled.div`
     cursor: pointer;
     color: #999;
     ${(props) => props.theme.mixin.boxShadow}
-    .panel{
+    .panel {
       position: absolute;
       right: 0;
       top: 60px;
       width: 240px;
       background-color: #fff;
       color: #666;
-      box-shadow: 0 0 2px 2px rgba(0,0,0,.18);
+      box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.18);
       border-radius: 10px;
-      .top,.bottom{
+      .top,
+      .bottom {
         padding: 10px 0;
-        .item{
+        .item {
           height: 40px;
           line-height: 40px;
           padding: 0 14px;
-          &:hover{
+          &:hover {
             background-color: #f5f5f5;
           }
         }
       }
-      .top{
+      .top {
         border-bottom: 2px solid #eee;
       }
     }

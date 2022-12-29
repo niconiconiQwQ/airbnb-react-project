@@ -5,7 +5,7 @@ position: relative;
   > .pictures {
     display: flex;
     height: 600px;
-    background-color: #000;
+    /* background-color: #000; */
     &:hover{
       .cover{
         opacity: 1 !important;
@@ -19,6 +19,9 @@ position: relative;
       width: 50%;
       height: 100%;
       .item {
+        /* maring padding 清零 有干扰 */
+        margin: 0;
+        padding: 0;
         position: relative;
         height: 100%;
         overflow: hidden;
@@ -53,7 +56,7 @@ position: relative;
         width: 50%;
         height: 50%;
         box-sizing: border-box;
-        border-bottom: 1px solid #000;
+        /* border-bottom: 1px solid #000; */
       }
     }
   }

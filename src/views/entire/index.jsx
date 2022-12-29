@@ -11,7 +11,7 @@ const Entire = memo(() => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchRoomListAction());
-    dispatch(changeHeaderConfigAction({isFixed:true}))
+    dispatch(changeHeaderConfigAction({isFixed:true,topAlpha:false}))
   }, [dispatch])
   return (
     <EntireWrapper>
@@ -22,5 +22,4 @@ const Entire = memo(() => {
     </EntireWrapper>
   );
 });
-
 export default Entire;

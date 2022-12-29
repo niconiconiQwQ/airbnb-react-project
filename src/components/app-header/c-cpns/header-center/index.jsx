@@ -11,7 +11,7 @@ const Center = memo((props) => {
   const [isShow,setIsShow] = useState(true)
   const titles = searchTitles.map((item) => item.title);
   function tabClickHandle(index) {
-    setTabIndex(index);
+    setTabIndex(index)
   }
   function searchBarClickHandle() {
     if (searchBarClick) searchBarClick();

@@ -8,6 +8,7 @@ export const SearchWrapper = styled.div`
   padding: 20px 30px;
   border-radius: 30px;
   border: 1px solid #eee;
+  background-color: #fff;
   .item {
     display: flex;
     align-items: center;

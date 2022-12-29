@@ -3,7 +3,8 @@ const mainSlice = createSlice({
   name: 'main',
   initialState: {
     headerConfig: {
-      isFlexed:false
+      isFlexed: false,
+      topAlpha:false
     }
   },
   reducers: {

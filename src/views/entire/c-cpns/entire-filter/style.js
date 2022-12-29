@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FilterWrapper = styled.div`
   position: fixed;
   top: 80px;
-  z-index: 99;
+  z-index: 5;
   left: 0;
   right: 0;
   display: flex;
